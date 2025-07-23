@@ -1,0 +1,26 @@
+services:
+  frontend-admin:
+    # 터미널 입력 허용
+    stdin_open: true
+    tty: true
+
+    # 현재 경로에 이미지 빌드
+    build: 
+      context: .
+      dockerfile: Dockerfile.dev
+
+    # 포트 번호 매핑
+    ports:
+      - 5173:5173
+
+    # 호스트 디렉토리에 바인드 마운트
+    volumes:
+      - ./:/app
+      - /app/node_modules
+
+    # 환경변수 설정
+    environment:
+      - CHOKIDAR_USEPOLLING=true # 파일 변경 시 핫 리로드 위해 사용
+
+    # 컨테이너 실행 시 실행할 명령어
+    command: pnpm run dev
