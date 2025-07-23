@@ -5,6 +5,7 @@
 ## 사용 라이브러리
 
 - [React (19.1.0)](https://ko.react.dev/)
+- [react-router (7.7.0)](https://reactrouter.com/start/data/custom)
 - [tailwindcss (4.1.11)](https://tailwindcss.com/)
 - [shadcn/ui](https://ui.shadcn.com/)
 - [axios (1.11.0)](https://axios-http.com/kr/docs/intro)
@@ -25,17 +26,23 @@ src/
 ├── hooks/          # 커스텀 훅
 ├── utils/          # 유틸리티 함수
 ├── types/          # 공통 타입 정의(TypeScript 인터페이스, 타입 등)
-├── main.jsx        # 진입점(엔트리포인트)
+├── constants/      # 프로젝트 전역에서 사용하는 상수 값 정의
+├── routers/        # 라우팅 관련 설정 및 라우터 정의
+├── App.tsx          # 전체 앱의 뼈대
+├── main.tsx        # 진입점(엔트리포인트)
 └── global.css      # 전역 스타일
 ```
 
 - **assets/**: 이미지, 아이콘, 폰트 등 정적 파일 보관
 - **components/**: 여러 페이지에서 재사용할 수 있는 UI 컴포넌트
+  - **components/shared/**: 공통 컴포넌트 중에서도 가장 자주 사용되는, 가장 작은 단위의 컴포넌트 집합 (예: Button, Input, Checkbox 등)
 - **pages/**: 라우터에서 사용하는 각 페이지별 컴포넌트 (예: Home.jsx, About.jsx 등)
 - **hooks/**: 직접 만든 커스텀 훅(useXXX)
 - **utils/**: 여러 곳에서 쓸 수 있는 함수들
 - **types/**: 프로젝트 전역에서 사용하는 TypeScript 타입, 인터페이스 등 공통 타입 정의
-- **App.jsx**: 전체 앱의 뼈대(라우팅, 레이아웃 등)
+- **constants/**: 프로젝트 전역에서 사용하는 상수 값(예: 페이지 진입 경로, 공통 메시지 등)을 정의
+- **routers/**: 라우팅 관련 설정 및 라우터 컴포넌트, 라우트 맵 등을 정의
+- **App.tsx**: 전체 앱의 뼈대 역할을 하는 컴포넌트로, 라우팅, 레이아웃, 글로벌 상태 관리 등 핵심 구조를 담당
 - **main.jsx**: 앱의 진입점
 - **index.css**: TailwindCSS 등 전역 스타일
 

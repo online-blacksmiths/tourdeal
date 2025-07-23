@@ -1,7 +1,7 @@
 import { Button } from "@/components/shared/Button";
 import { useState } from "react";
 
-export default function App() {
+export default function Home() {
   const [count, setCount] = useState(0);
   return (
     <div>
