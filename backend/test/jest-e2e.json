@@ -1,0 +1,19 @@
+{
+  "moduleFileExtensions": [
+    "js",
+    "json",
+    "ts"
+  ],
+  "rootDir": ".",
+  "testEnvironment": "node",
+  "testRegex": ".e2e-spec.ts$",
+  "transform": {
+    "^.+\\.(t|j)s$": "ts-jest"
+  },
+  "moduleNameMapper": {
+    "@tourdeal-backend/context-storage": "<rootDir>/../libs/context-storage/src",
+    "@tourdeal-backend/context-storage/(.*)": "<rootDir>/../libs/context-storage/src/$1",
+    "@tourdeal-backend/logger": "<rootDir>/../libs/logger/src",
+    "@tourdeal-backend/logger/(.*)": "<rootDir>/../libs/logger/src/$1"
+  }
+}
