@@ -1,10 +1,10 @@
 import { screen } from "@/styles/common";
 import { Text, View } from "react-native";
 
-export default function Home() {
+export default function Signup() {
   return (
     <View style={screen.container}>
-      <Text>Home</Text>
+      <Text>Signup</Text>
     </View>
   );
 }
