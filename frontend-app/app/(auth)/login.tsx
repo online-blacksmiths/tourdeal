@@ -1,6 +1,7 @@
-import { ROUTES } from "@/constants/routes";
 import { Link } from "expo-router";
 import { Text, View } from "react-native";
+
+import { ROUTES } from "@/constants/routes";
 
 export default function Login() {
   return (

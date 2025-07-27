@@ -1,9 +1,12 @@
+import "@/global.css";
+
 import { Stack } from "expo-router";
 
-import "@/global.css";
 import { GluestackUIProvider } from "@/components/ui/gluestack-ui-provider";
+import { useAxiosInstance } from "@/utils/instance";
 
 export default function RootLayout() {
+  useAxiosInstance();
   return (
     <GluestackUIProvider mode="light">
       <Stack screenOptions={{ headerShown: false }}>

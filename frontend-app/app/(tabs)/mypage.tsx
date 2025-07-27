@@ -1,7 +1,8 @@
-import { ROUTES } from "@/constants/routes";
 import { useRouter } from "expo-router";
 import { useEffect } from "react";
 import { Text, View } from "react-native";
+
+import { ROUTES } from "@/constants/routes";
 
 export default function MyPage() {
   // TODO 로그인 체크 필요
