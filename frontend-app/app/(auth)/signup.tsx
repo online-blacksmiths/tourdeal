@@ -1,9 +1,8 @@
-import { screen } from "@/styles/common";
 import { Text, View } from "react-native";
 
 export default function Signup() {
   return (
-    <View style={screen.container}>
+    <View className="flex-1 items-center justify-center">
       <Text>Signup</Text>
     </View>
   );

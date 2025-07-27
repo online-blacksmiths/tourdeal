@@ -1,5 +1,4 @@
 import { ROUTES } from "@/constants/routes";
-import { screen } from "@/styles/common";
 import { useRouter } from "expo-router";
 import { useEffect } from "react";
 import { Text, View } from "react-native";
@@ -20,7 +19,7 @@ export default function MyPage() {
   }
 
   return (
-    <View style={screen.container}>
+    <View className="flex-1 items-center justify-center">
       <Text>MyPage</Text>
     </View>
   );
