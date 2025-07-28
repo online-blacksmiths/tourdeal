@@ -15,4 +15,9 @@ export class AppController {
   async printLog(): Promise<string> {
     return await this.appService.printLog();
   }
+
+  @Get('/exception')
+  getException() {
+    return this.appService.getExcpetion();
+  }
 }

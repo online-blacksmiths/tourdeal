@@ -19,7 +19,7 @@ export const extractRequestId = (req: Request): string => {
 
   if (Array.isArray(requestId)) {
     const firstId = requestId[0];
-    if (firstId && firstId.trim()) {
+    if (firstId?.trim()) {
       return firstId;
     }
   }

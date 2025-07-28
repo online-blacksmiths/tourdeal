@@ -33,7 +33,7 @@ export default class NestjsLoggerServiceAdapter
 
   private getLogData(...optionalParams: any[]) {
     return {
-      sourceClass: optionalParams[0] ? optionalParams[0] : undefined,
+      sourceClass: optionalParams[0] ?? undefined,
     };
   }
 }

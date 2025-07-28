@@ -11,5 +11,6 @@ export interface LogData {
   sourceClass?: string; // Classname of the source
   requestId?: string; // Request ID
   error?: Error; // Error object
+  stack?: string; // Stack trace
   props?: NodeJS.Dict<any>; // Additional custom properties
 }

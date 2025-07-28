@@ -7,6 +7,8 @@ import {
 } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 
+import * as winston from 'winston';
+
 import LoggerService from './logger.service';
 
 import Logger, {
@@ -42,7 +44,7 @@ import WinstonLogger, {
     {
       provide: WinstonLoggerTransportsKey,
       useFactory: () => {
-        const transports = [];
+        const transports: winston.transport[] = [];
 
         transports.push(ConsoleTransport.createColorize());
 

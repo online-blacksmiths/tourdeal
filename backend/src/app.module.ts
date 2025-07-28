@@ -1,5 +1,6 @@
 import { Logger, MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { APP_FILTER } from '@nestjs/core';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
 import * as Joi from 'joi';
@@ -10,6 +11,9 @@ import { AppService } from './app.service';
 
 import { ContextStorageModule } from '@tourdeal-backend/context-storage/context-storage.module';
 import { LoggerModule } from '@tourdeal-backend/logger/logger.module';
+import { SwaggerModule } from '@tourdeal-backend/swagger/swagger.module';
+
+import { HttpExceptionFilter } from './core/filters/http-exception.filter';
 
 import { AppController } from './app.controller';
 
@@ -47,9 +51,19 @@ import { AppController } from './app.controller';
         logging: configService.get<string>('NODE_ENV') !== 'prod',
       }),
     }),
+    // INFO: SwaggerModule는 개발 환경에서만 활성화됩니다.
+    ...(process.env.NODE_ENV !== 'prod' ? [SwaggerModule] : []),
   ],
   controllers: [AppController],
-  providers: [Logger, AppService, RequestMiddleware],
+  providers: [
+    Logger,
+    AppService,
+    RequestMiddleware,
+    {
+      provide: APP_FILTER,
+      useClass: HttpExceptionFilter,
+    },
+  ],
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {

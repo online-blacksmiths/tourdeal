@@ -58,8 +58,8 @@ export default class LoggerService implements Logger {
   private getLogData(data?: LogData): LogData {
     return {
       ...data,
-      sourceClass: data?.sourceClass || this.sourceClass,
-      requestId: data?.requestId || this.contextStorageService.getRequestId(),
+      sourceClass: data?.sourceClass ?? this.sourceClass,
+      requestId: data?.requestId ?? this.contextStorageService.getRequestId(),
     };
   }
 

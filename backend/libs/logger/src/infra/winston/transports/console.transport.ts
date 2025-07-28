@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-base-to-string */
 /* eslint-disable @typescript-eslint/restrict-template-expressions */
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+
 import { LogLevel } from '@tourdeal-backend/logger/enums/log.enum';
 import * as winston from 'winston';
 
@@ -38,14 +38,11 @@ export default class ConsoleTransport {
             })(),
           );
           const errorMsg = logData.error
-            ? this.colorize(color, `\n - Error Message: \n${logData.error}`)
+            ? this.colorize(color, `\n - Error Message: ${logData.error}`)
             : '';
 
           const stack = logData.stack
-            ? this.colorize(
-                LogColors.error,
-                `\n - Error Stack: \n${logData.stack}`,
-              )
+            ? this.colorize(color, `\n - Error Stack: \n${logData.stack}`)
             : '';
           const props = logData.props
             ? `\n - Props: \n${JSON.stringify(logData.props, null, 4)}`
