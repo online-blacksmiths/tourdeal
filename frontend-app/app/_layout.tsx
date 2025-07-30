@@ -1,13 +1,23 @@
 import "@/global.css";
 
+import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
 
 import { GluestackUIProvider } from "@/components/ui/gluestack-ui-provider";
-import { useAxiosInstance } from "@/utils/instance";
 import { QueryProvider } from "@/providers/react-query";
+import { useAxiosInstance } from "@/utils/instance";
 
 export default function RootLayout() {
   useAxiosInstance();
+
+  const [loaded, error] = useFonts({
+    PretendardVariable: require("@/assets/fonts/PretendardVariable.ttf"),
+  });
+
+  console.log(loaded);
+
+  if (!loaded) return null;
+
   return (
     <GluestackUIProvider mode="light">
       <QueryProvider>

@@ -11,6 +11,22 @@ module.exports = {
         /(bg|border|text|stroke|fill)-(primary|secondary|tertiary|error|success|warning|info|typography|outline|background|indicator)-(0|50|100|200|300|400|500|600|700|800|900|950|white|gray|black|error|warning|muted|success|info|light|dark|primary)/,
     },
   ],
+  fontFamily: {
+    heading: "PretendardVariable",
+    body: "PretendardVariable",
+    mono: "PretendardVariable",
+  },
+  fontWeight: {
+    thin: "100",
+    extralight: "200",
+    light: "300",
+    normal: "400",
+    medium: "500",
+    semibold: "600",
+    bold: "700",
+    extrabold: "800",
+    black: "900",
+  },
   theme: {
     extend: {
       colors: {
