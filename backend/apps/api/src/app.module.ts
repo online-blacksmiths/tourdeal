@@ -22,7 +22,7 @@ import { AppController } from './app.controller';
     LoggerModule,
     ConfigModule.forRoot({
       isGlobal: true,
-      envFilePath: `.${process.env.NODE_ENV}.env`,
+      envFilePath: ['.shared.env', `apps/api/.${process.env.NODE_ENV}.env`],
       ignoreEnvFile: process.env.NODE_ENV == 'prod',
       validationSchema: Joi.object({
         NODE_ENV: Joi.string()

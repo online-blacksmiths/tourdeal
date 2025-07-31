@@ -18,6 +18,30 @@
     "strictBindCallApply": false,
     "noFallthroughCasesInSwitch": false,
     "paths": {
+      "@app/core": [
+        "libs/core/src"
+      ],
+      "@app/core/*": [
+        "libs/core/src/*"
+      ],
+      "@app/database": [
+        "libs/database/src"
+      ],
+      "@app/database/*": [
+        "libs/database/src/*"
+      ],
+      "@app/shared": [
+        "libs/shared/src"
+      ],
+      "@app/shared/*": [
+        "libs/shared/src/*"
+      ],
+      "@libs/shared": [
+        "libs/shared"
+      ],
+      "@libs/shared/*": [
+        "libs/shared/*"
+      ],
       "@tourdeal-backend/context-storage": [
         "libs/context-storage/src"
       ],
@@ -32,12 +56,6 @@
       ],
       "@tourdeal-backend/swagger/*": [
         "libs/swagger/src/*"
-      ],
-      "@libs/shared": [
-        "libs/shared"
-      ],
-      "@libs/shared/*": [
-        "libs/shared/*"
       ]
     }
   }

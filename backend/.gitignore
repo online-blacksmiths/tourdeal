@@ -201,7 +201,14 @@ tags
 
 # dotenv environment variable files
 .*.env
+.env.*
 !.example.env
 
-# Claude
+# AI
 CLAUDE.md
+CLAUDE.*.md
+GEMINI.md
+GEMINI.*.md
+
+# Project Plan
+planner/*

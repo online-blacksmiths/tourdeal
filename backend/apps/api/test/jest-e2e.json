@@ -1,0 +1,19 @@
+{
+  "moduleFileExtensions": [
+    "js",
+    "json",
+    "ts"
+  ],
+  "rootDir": ".",
+  "testEnvironment": "node",
+  "testRegex": ".e2e-spec.ts$",
+  "transform": {
+    "^.+\\.(t|j)s$": "ts-jest"
+  },
+  "setupFiles": ["<rootDir>/setup-e2e.js"],
+  "moduleNameMapper": {
+    "^@tourdeal-backend/context-storage(|/.*)$": "<rootDir>/../../../libs/context-storage/src$1",
+    "^@tourdeal-backend/logger(|/.*)$": "<rootDir>/../../../libs/logger/src$1",
+    "^@tourdeal-backend/swagger(|/.*)$": "<rootDir>/../../../libs/swagger/src$1"
+  }
+}

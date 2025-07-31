@@ -1,6 +1,3 @@
-import { LogLevel } from '@tourdeal-backend/logger/enums/log.enum';
-
-import { LogData } from '@tourdeal-backend/logger/interfaces/log.interface';
 import Logger, {
   LoggerKey,
 } from '@tourdeal-backend/logger/interfaces/logger.interface';
