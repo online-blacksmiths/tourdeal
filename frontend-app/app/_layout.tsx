@@ -21,9 +21,22 @@ export default function RootLayout() {
   return (
     <GluestackUIProvider mode="light">
       <QueryProvider>
-        <Stack screenOptions={{ headerShown: false }}>
-          <Stack.Screen name="(tabs)" />
-          <Stack.Screen name="(auth)/login" />
+        <Stack>
+          <Stack.Screen
+            name="(tabs)"
+            options={{
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name="(auth)/login"
+            options={{
+              headerTitle: "",
+              headerBackButtonDisplayMode: "minimal",
+              headerShadowVisible: false,
+              headerBackTitle: "",
+            }}
+          />
           <Stack.Screen name="(auth)/signup" />
         </Stack>
       </QueryProvider>
