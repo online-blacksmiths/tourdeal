@@ -37,7 +37,15 @@ export default function RootLayout() {
               headerBackTitle: "",
             }}
           />
-          <Stack.Screen name="(auth)/signup" />
+          <Stack.Screen
+            name="(auth)/signup"
+            options={{
+              headerTitle: "",
+              headerBackButtonDisplayMode: "minimal",
+              headerShadowVisible: false,
+              headerBackTitle: "",
+            }}
+          />
         </Stack>
       </QueryProvider>
     </GluestackUIProvider>
