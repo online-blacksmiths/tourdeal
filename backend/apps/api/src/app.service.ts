@@ -4,6 +4,8 @@ import Logger, {
   LoggerKey,
 } from '@tourdeal-backend/logger/interfaces/logger.interface';
 
+import { ExampleDto } from './app.dto';
+
 import { CoreHttpException } from './core/exceptions/core.exception';
 
 @Injectable()
@@ -97,5 +99,12 @@ export class AppService {
     });
 
     return '로그를 확인하세요!';
+  }
+
+  getCoreResponse(): ExampleDto {
+    return {
+      name: 'bar',
+      age: 1,
+    };
   }
 }

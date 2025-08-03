@@ -11,7 +11,7 @@ export interface BaseDecoratorOptions extends ValidationOptions {
   nullable?: boolean; // 속성이 null일 수 있는지 여부
 
   // 변환 옵션
-  transform?: boolean; // 속성을 변환해야 하는지 여부
+  transform?: boolean | ((value: any) => any); // 속성을 변환해야 하는지 여부
 
   // 커스텀 옵션
   errorKey?: string; // 유효성 검사 메시지를 위한 커스텀 에러 키

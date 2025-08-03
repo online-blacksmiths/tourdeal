@@ -31,5 +31,26 @@ export class CoreResponse<T> {
   data: T | null = null;
 
   @NestedProperty(() => CoreMetadata, { description: '메타데이터' })
-  meta: CoreMetadata = new CoreMetadata();
+  meta: CoreMetadata;
+
+  constructor(partial?: Partial<CoreResponse<T>>) {
+    Object.assign(this, partial);
+    this.meta = new CoreMetadata();
+  }
+
+  static success<T>(data: T, message?: string): CoreResponse<T> {
+    return new CoreResponse({
+      result: true,
+      data,
+      message: message ?? null,
+    });
+  }
+
+  static error<T>(message: string, data?: T): CoreResponse<T> {
+    return new CoreResponse({
+      result: false,
+      message,
+      data: data ?? null,
+    });
+  }
 }

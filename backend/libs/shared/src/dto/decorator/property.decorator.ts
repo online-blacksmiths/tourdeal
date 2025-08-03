@@ -45,9 +45,11 @@ export function StringProperty(
     trim: shouldTrim = false,
     lowercase = false,
     uppercase = false,
-    transform = shouldTrim ?? lowercase ?? uppercase,
+    transform: customTransform,
     ...baseOptions
   } = options;
+
+  const transform = customTransform ?? (shouldTrim || lowercase || uppercase);
 
   const decorators: PropertyDecorator[] = [
     IsString(DecoratorFactory.createValidationOptions(options.errorKey)),
@@ -370,8 +372,7 @@ export function NestedProperty<T = any>(
   return DecoratorFactory.createPropertyDecorator(type, decorators, options);
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-export function GenericProperty<T = any>(
+export function GenericProperty<_T = any>(
   options: BaseDecoratorOptions & {
     type?: () => any;
     isArray?: boolean;
@@ -460,10 +461,7 @@ export function GenericProperty<T = any>(
   return DecoratorFactory.createPropertyDecorator(
     isArray ? [swaggerType] : swaggerType,
     decorators,
-    {
-      ...baseOptions,
-      type: type ?? (() => Object),
-    },
+    baseOptions,
   );
 }
 

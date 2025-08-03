@@ -1,8 +1,9 @@
 import { Logger, MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
-import { APP_FILTER } from '@nestjs/core';
+import { APP_FILTER, APP_INTERCEPTOR } from '@nestjs/core';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
+import { RequestIdInterceptor } from '@tourdeal-backend/shared';
 import * as Joi from 'joi';
 
 import { RequestMiddleware } from './core/middlewares/request.middleware';
@@ -62,6 +63,10 @@ import { AppController } from './app.controller';
     {
       provide: APP_FILTER,
       useClass: HttpExceptionFilter,
+    },
+    {
+      provide: APP_INTERCEPTOR,
+      useClass: RequestIdInterceptor,
     },
   ],
 })

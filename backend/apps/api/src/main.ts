@@ -1,4 +1,5 @@
-import { NestFactory } from '@nestjs/core';
+import { ClassSerializerInterceptor, ValidationPipe } from '@nestjs/common';
+import { NestFactory, Reflector } from '@nestjs/core';
 
 import NestjsLoggerServiceAdapter from '@tourdeal-backend/logger/infra/nestjs/logger-service.adapter';
 
@@ -11,6 +12,18 @@ async function bootstrap() {
     });
 
     app.useLogger(app.get(NestjsLoggerServiceAdapter));
+
+    app.useGlobalPipes(
+      new ValidationPipe({
+        whitelist: true,
+        forbidNonWhitelisted: true,
+        transform: true,
+      }),
+    );
+
+    app.useGlobalInterceptors(
+      new ClassSerializerInterceptor(app.get(Reflector)),
+    );
 
     if (process.env.NODE_ENV !== 'prod') {
       const { SwaggerService } = await import(

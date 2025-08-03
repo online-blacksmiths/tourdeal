@@ -211,4 +211,5 @@ GEMINI.md
 GEMINI.*.md
 
 # Project Plan
-planner/*
+.planner/*
+.examples/*
