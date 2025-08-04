@@ -3,6 +3,11 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { APP_FILTER, APP_INTERCEPTOR } from '@nestjs/core';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
+import {
+  DATABASE_CONFIG_TOKEN,
+  DatabaseModule,
+  IDatabaseConfig,
+} from '@tourdeal-backend/database';
 import { RequestIdInterceptor } from '@tourdeal-backend/shared';
 import * as Joi from 'joi';
 
@@ -38,19 +43,12 @@ import { AppController } from './app.controller';
       }),
     }),
     ContextStorageModule,
+    DatabaseModule,
     TypeOrmModule.forRootAsync({
-      imports: [ConfigModule],
-      inject: [ConfigService],
-      useFactory: (configService: ConfigService) => ({
-        type: 'mysql',
-        host: configService.get<string>('DB_HOST'),
-        port: configService.get<number>('DB_PORT'),
-        username: configService.get<string>('DB_USERNAME'),
-        password: configService.get<string>('DB_PASSWORD'),
-        database: configService.get<string>('DB_NAME'),
-        synchronize: configService.get<string>('NODE_ENV') !== 'prod',
-        logging: configService.get<string>('NODE_ENV') !== 'prod',
-      }),
+      imports: [DatabaseModule],
+      inject: [DATABASE_CONFIG_TOKEN],
+      useFactory: (databaseConfig: IDatabaseConfig) =>
+        databaseConfig.getTypeOrmConfig(),
     }),
     // INFO: SwaggerModule는 개발 환경에서만 활성화됩니다.
     ...(process.env.NODE_ENV !== 'prod' ? [SwaggerModule] : []),

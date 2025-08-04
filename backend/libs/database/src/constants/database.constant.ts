@@ -14,7 +14,38 @@ export const DATABASE_ENVIRONMENTS = {
   TEST: 'test',
 } as const;
 
-export const ENTITY_PATHS = {
-  DEVELOPMENT: [__dirname + '/../**/*.entity{.ts,.js}'],
-  PRODUCTION: [__dirname + '/../**/*.entity.js'],
+export const DATABASE_PATHS = {
+  MIGRATIONS: [__dirname + '/../migrations/**/*.{ts,js}'],
 };
+
+/**
+ * 환경별 로깅 설정을 반환하는 함수
+ */
+export const getLoggingConfig = (
+  environment: string,
+):
+  | boolean
+  | 'all'
+  | (
+      | 'query'
+      | 'error'
+      | 'schema'
+      | 'warn'
+      | 'info'
+      | 'log'
+      | 'migration'
+    )[] => {
+  const isProduction = environment === DATABASE_ENVIRONMENTS.PRODUCTION;
+  if (isProduction) {
+    return ['error', 'warn'];
+  }
+  return true;
+};
+
+/**
+ * TypeORM Migration 설정 상수
+ */
+export const MIGRATION_CONSTANTS = {
+  /** Migration 테이블명 */
+  TABLE_NAME: 'typeorm_migrations',
+} as const;

@@ -1,6 +1,10 @@
 import { ClassSerializerInterceptor, ValidationPipe } from '@nestjs/common';
 import { NestFactory, Reflector } from '@nestjs/core';
 
+import {
+  DATABASE_CONFIG_TOKEN,
+  IDatabaseConfig,
+} from '@tourdeal-backend/database';
 import NestjsLoggerServiceAdapter from '@tourdeal-backend/logger/infra/nestjs/logger-service.adapter';
 
 import { AppModule } from './app.module';
@@ -11,7 +15,18 @@ async function bootstrap() {
       bufferLogs: true,
     });
 
-    app.useLogger(app.get(NestjsLoggerServiceAdapter));
+    const logger = app.get(NestjsLoggerServiceAdapter);
+    app.useLogger(logger);
+
+    const dbConfig = app.get<IDatabaseConfig>(DATABASE_CONFIG_TOKEN);
+    const isDbConnected = await dbConfig.validateConnection();
+
+    if (!isDbConnected) {
+      logger.error('Database connection failed. Exiting application.');
+      process.exit(1);
+    }
+
+    logger.debug('Database connection established successfully.');
 
     app.useGlobalPipes(
       new ValidationPipe({

@@ -1,7 +1,3 @@
-// Core exports
-export * from './shared.module';
-export * from './shared.service';
-
 // DTO exports
 export * from './dto';
 
